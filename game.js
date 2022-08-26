@@ -15,6 +15,11 @@ let bars=[
 
 let q;
 
+function loadScore(){
+    let highscore = localStorage.getItem("highscore") || 0;
+    document.getElementById('high').innerText=highscore
+}
+
 function startGame(){
     document.getElementById('scr').innerText=0
 
@@ -30,7 +35,7 @@ function startGame(){
             gameOver()
          clearInterval(q)
         }
-        by=y+80
+        by=y+80 
         bx=x+120
         if((bx>bars[nextBars].xstart&&bx<bars[nextBars].xend)&&(by>bars[nextBars].ybottom || y<bars[nextBars].ytop)){
             gameOver()
@@ -120,6 +125,7 @@ function restartGame1(){
 function gameOver(){
     if(nextBars>highscore){
         highscore=nextBars
+        localStorage.setItem("highscore", highscore);
         document.getElementById('high').innerText=highscore
     }
     game=false
