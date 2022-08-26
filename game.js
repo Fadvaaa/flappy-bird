@@ -6,6 +6,8 @@ let by=0
 let highscore=0
 let nextBars=0
 let createdBars=3
+let isplayed=false
+
 let bars=[
     {xstart:300,xend:380,ytop:250,ybottom:450},
     {xstart:680,xend:760,ytop:100,ybottom:300},
@@ -24,6 +26,7 @@ function startGame(){
     document.getElementById('scr').innerText=0
 
     game=true
+    isplayed=true
     document.getElementById('startmodal').style.visibility='hidden'
     q= setInterval(function(){
         x+=1
@@ -92,6 +95,8 @@ document.getElementById('body').addEventListener('keydown',function(i){
     if(i.keyCode==38&&game==true){
         y-=50
         document.getElementById('bb').style.top=y+"px" 
+    }else if(i.keyCode==13&&game==false){
+        isplayed?restartGame1():startGame()
     }
 })
 
